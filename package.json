@@ -18,7 +18,24 @@
         "title": "Open TreeTabs WebView",
         "category": "Tree Tabs"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "treetabs",
+          "title": "Tree Tabs",
+          "icon": "resources/tree-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "treetabs": [
+        {
+          "id": "tab-tree",
+          "name": ""
+        }
+      ]
+    }
   },
   "dependencies": {
     "react": "^16.3.2",
