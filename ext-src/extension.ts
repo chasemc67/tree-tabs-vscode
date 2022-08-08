@@ -9,7 +9,10 @@ export function activate(context: vscode.ExtensionContext) {
     })
   );
 
-  const provider = new WebViewProvider(context.extensionUri);
+  const provider = new WebViewProvider(
+    context.extensionUri,
+    context.extensionPath
+  );
 
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider(
