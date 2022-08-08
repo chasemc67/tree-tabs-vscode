@@ -52,17 +52,11 @@
       ]
     },
     "views": {
-      "explorer": [
+      "treetabs": [
         {
           "type": "webview",
           "id": "treeTabs.webViewProviderView",
           "name": "TreeTabs sidebar view"
-        }
-      ],
-      "treetabs": [
-        {
-          "id": "tab-tree",
-          "name": ""
         }
       ]
     }
