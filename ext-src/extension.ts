@@ -1,11 +1,21 @@
 import * as path from "path";
 import * as vscode from "vscode";
+import { WebViewProvider } from "./WebViewProvider";
 
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand("treetabs-vscode.start", () => {
       TreeTabsPanel.createOrShow(context.extensionPath);
     })
+  );
+
+  const provider = new WebViewProvider(context.extensionUri);
+
+  context.subscriptions.push(
+    vscode.window.registerWebviewViewProvider(
+      WebViewProvider.viewType,
+      provider
+    )
   );
 }
 

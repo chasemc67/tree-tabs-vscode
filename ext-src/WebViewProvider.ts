@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 
-export class ColorsViewProvider implements vscode.WebviewViewProvider {
-  public static readonly viewType = "calicoColors.colorsView";
+export class WebViewProvider implements vscode.WebviewViewProvider {
+  public static readonly viewType = "treeTabs.webViewProviderView";
 
   private _view?: vscode.WebviewView;
 
