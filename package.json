@@ -1,20 +1,22 @@
 {
-  "name": "vscode-webview-react",
-  "version": "0.1.0",
+  "name": "treetabs-vscode",
+  "displayName": "TreeTabs_VsCode",
+  "description": "A Tree-based layout mananger for open tabs",
+  "version": "0.0.1",
   "engines": {
     "vscode": "^1.23.0"
   },
   "publisher": "rebornix",
   "activationEvents": [
-    "onCommand:react-webview.start"
+    "onCommand:treetabs-vscode.start"
   ],
   "main": "./build/ext-src/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "react-webview.start",
-        "title": "Start React Webview",
-        "category": "React"
+        "command": "treetabs-vscode.start",
+        "title": "Open TreeTabs WebView",
+        "category": "Tree Tabs"
       }
     ]
   },
@@ -36,10 +38,12 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.13",
+    "@types/mocha": "^9.1.1",
+    "@types/glob": "^7.2.0",
     "@types/node": "^10.1.2",
     "@types/react": "^16.3.14",
     "@types/react-dom": "^16.0.5",
+    "@vscode/test-electron": "^2.1.5",
     "react-scripts": "^2.1.3",
     "rewire": "^4.0.1",
     "typescript": "^3.3.1"
