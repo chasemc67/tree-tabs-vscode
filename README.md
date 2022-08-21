@@ -34,6 +34,10 @@ npm run build
 
 And then press F5, in Extension Development Host session, run `Start React Webview` command from command palette.
 
+## Debugging
+
+To see console.log outputs from the webview, in the VSCode test instance click `help -> toggle developer tools`
+
 ## Under the hood
 
 Things we did on top of Create React App TypeScript template
