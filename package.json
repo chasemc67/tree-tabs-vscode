@@ -42,7 +42,6 @@
       "editor/context": [
         {
           "command": "treetabs-vscode.rightClick",
-          "when": "resourceLangId == javascript",
           "group": "navigation"
         }
       ],
