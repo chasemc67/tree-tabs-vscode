@@ -101,22 +101,6 @@
     },
     "submenus": [
       {
-        "id": "treetabs-vscode.addChild",
-        "label": "Add Child"
-      },
-      {
-        "id": "treetabs-vscode.addSibling",
-        "label": "Add Sibling"
-      },
-      {
-        "id": "treetabs-vscode.addParent",
-        "label": "Add Parent"
-      },
-      {
-        "id": "treetabs-vscode.addRoot",
-        "label": "Add Root"
-      },
-      {
         "id": "treetabs-vscode.menuItems",
         "label": "Add to tab tree"
       }
