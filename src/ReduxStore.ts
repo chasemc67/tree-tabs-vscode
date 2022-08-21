@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./TestReducer";
+import treeReducer from "./TreeReducer";
 
 type TreeTabsReduxState = {
   test?: number;
@@ -24,7 +25,7 @@ const rootReducer = function (
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    Trees: treeReducer,
   },
 });
 

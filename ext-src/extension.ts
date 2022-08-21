@@ -2,8 +2,19 @@ import * as path from "path";
 import * as vscode from "vscode";
 import { WebViewProvider } from "./WebViewProvider";
 
+function sendAddTabMessage(command: string) {
+  let fileName = vscode.window.activeTextEditor?.document?.fileName;
+  // let fileName = file?.fileName;
+  let lineNumber = vscode.window.activeTextEditor?.selection?.start.line;
+  // let lineNumber = selection?.start.line;
+  TreeTabsPanel.currentPanel?.postMessage({
+    command,
+    fileName,
+    lineNumber,
+  });
+}
+
 export function activate(context: vscode.ExtensionContext) {
-  console.log("============== Tree tabs is starting up");
   context.subscriptions.push(
     vscode.commands.registerCommand("treetabs-vscode.start", () => {
       TreeTabsPanel.createOrShow(context.extensionPath);
@@ -12,25 +23,25 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand("treetabs-vscode.addChild", () => {
-      TreeTabsPanel.currentPanel?.postMessage({ command: "addChild" });
+      sendAddTabMessage("addChild");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("treetabs-vscode.addSibling", () => {
-      TreeTabsPanel.currentPanel?.postMessage({ command: "addSibling" });
+      sendAddTabMessage("addSibling");
     })
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand("treetabs-vscode.addParent", () => {
-      TreeTabsPanel.currentPanel?.postMessage({ command: "addParent" });
+      sendAddTabMessage("addParent");
     })
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("treetabs-vscode.addRoot", () => {
-      TreeTabsPanel.currentPanel?.postMessage({ command: "addRoot" });
+    vscode.commands.registerCommand("treetabs-vscode.addRoot", (args) => {
+      sendAddTabMessage("addRoot");
     })
   );
 

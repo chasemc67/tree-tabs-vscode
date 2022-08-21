@@ -5,28 +5,26 @@ import { Provider } from "react-redux";
 import App from "./App";
 import "./index.css";
 
-import { increment } from "./TestReducer";
+import { addChild, addSibling, addParent, addRoot } from "./TreeReducer";
 
 window.addEventListener("message", (event) => {
-  console.log("========== recieved message");
   const message = event.data;
 
   switch (message.command) {
     case "addChild":
-      console.log("====== message command was addChild");
-      store.dispatch(increment());
+      store.dispatch(addChild());
       break;
     case "addSibling":
-      console.log("====== message command was addSibling");
+      store.dispatch(addSibling());
       break;
     case "addParent":
-      console.log("====== message command was addParent");
+      store.dispatch(addParent());
       break;
     case "addRoot":
-      console.log("====== message command was addRoot");
+      console.log(`====== dispatching message: ${JSON.stringify(message)}`);
+      store.dispatch(addRoot(message));
       break;
     default:
-      console.log("==== recieved message with unknown command");
       break;
   }
 });

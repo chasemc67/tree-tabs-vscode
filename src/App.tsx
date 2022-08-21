@@ -8,7 +8,7 @@ import "./App.css";
 import logo from "./logo.svg";
 
 export function App() {
-  const count = useSelector((state: RootState) => state.counter.value);
+  const rootNodes = useSelector((state: RootState) => state.Trees.nodes);
   const dispatch = useDispatch();
 
   let data = {
@@ -39,22 +39,18 @@ export function App() {
     dispatch(increment());
   };
 
-  console.log("test log");
-
   return (
     <div className="App">
       <header className="App-header">
         <h1 className="App-title">Welcome to Tree Tabs Hooks</h1>
-        <button aria-label="Increment value" onClick={() => onButtonClick()}>
-          Increment
-        </button>
-        <span>{count}</span>
-        <button
-          aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
-          Decrement
-        </button>
+        {rootNodes.map((node) => {
+          let name = `${node.fileName}:${node.lineNumber}`;
+          return (
+            <button aria-label={name} onClick={() => onButtonClick()}>
+              {name}
+            </button>
+          );
+        })}
       </header>
     </div>
   );
