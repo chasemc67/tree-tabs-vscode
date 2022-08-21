@@ -12,7 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand("treetabs-vscode.rightClick", () => {
-      console.log("Right click was clicked");
+      TreeTabsPanel.currentPanel?.postMessage({ command: "RightClick" });
     })
   );
 
@@ -60,6 +60,16 @@ class TreeTabsPanel {
         column || vscode.ViewColumn.One
       );
     }
+  }
+
+  public postMessage(message: any) {
+    if (!this._panel) {
+      console.log("======== no current panel");
+      return;
+    }
+
+    console.log("========== posting message");
+    this._panel.webview.postMessage(message);
   }
 
   private constructor(extensionPath: string, column: vscode.ViewColumn) {
