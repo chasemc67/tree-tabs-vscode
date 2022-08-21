@@ -105,6 +105,8 @@ class TreeTabsPanel {
           case "alert":
             vscode.window.showErrorMessage(message.text);
             return;
+          case "tabSelected":
+            console.log("===== webView requested to switch tab");
         }
       },
       null,

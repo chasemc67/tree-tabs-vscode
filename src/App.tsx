@@ -28,16 +28,24 @@ export function App() {
     );
   };
 
+  let onButtonClick = function () {
+    // @ts-ignore
+    const vscode = acquireVsCodeApi(); // this needs to be moved to some global singleton or something
+    vscode.postMessage({
+      command: "tabSelected",
+      text: "somet text",
+    });
+
+    dispatch(increment());
+  };
+
   console.log("test log");
 
   return (
     <div className="App">
       <header className="App-header">
         <h1 className="App-title">Welcome to Tree Tabs Hooks</h1>
-        <button
-          aria-label="Increment value"
-          onClick={() => dispatch(increment())}
-        >
+        <button aria-label="Increment value" onClick={() => onButtonClick()}>
           Increment
         </button>
         <span>{count}</span>
