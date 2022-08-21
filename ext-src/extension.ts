@@ -3,9 +3,16 @@ import * as vscode from "vscode";
 import { WebViewProvider } from "./WebViewProvider";
 
 export function activate(context: vscode.ExtensionContext) {
+  console.log("============== Tree tabs is starting up");
   context.subscriptions.push(
     vscode.commands.registerCommand("treetabs-vscode.start", () => {
       TreeTabsPanel.createOrShow(context.extensionPath);
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("treetabs-vscode.rightClick", () => {
+      console.log("Right click was clicked");
     })
   );
 
@@ -38,6 +45,7 @@ class TreeTabsPanel {
   private _disposables: vscode.Disposable[] = [];
 
   public static createOrShow(extensionPath: string) {
+    console.log("=========== tree tabs panel createOrShow");
     const column = vscode.window.activeTextEditor
       ? vscode.window.activeTextEditor.viewColumn
       : undefined;

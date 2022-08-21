@@ -22,6 +22,11 @@
         "category": "Tree Tabs"
       },
       {
+        "command": "treetabs-vscode.rightClick",
+        "title": "Tree tabs Right click",
+        "category": "Tree Tabs"
+      },
+      {
         "command": "calicoColors.addColor",
         "category": "Calico Colors",
         "title": "Add Color"
@@ -34,6 +39,13 @@
       }
     ],
     "menus": {
+      "editor/context": [
+        {
+          "command": "treetabs-vscode.rightClick",
+          "when": "resourceLangId == javascript",
+          "group": "navigation"
+        }
+      ],
       "view/title": [
         {
           "command": "calicoColors.clearColors",
