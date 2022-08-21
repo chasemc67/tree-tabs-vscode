@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
+// might want to modify this so its just a flat object keyed by ID
+// with the parents, children etc of each object
+// and just generate the graph at render
 type TreeNode = {
   id: string;
   parent?: string; // probably need to make these ids
