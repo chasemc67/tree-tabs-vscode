@@ -25,8 +25,11 @@ This project was bootstrapped with
 Run following commands in the terminal
 
 ```shell
-yarn install
-yarn run build
+// must use npm
+// for some reason installing dependencies with Yarn can cause type issues.
+// see: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20350
+npm install
+npm run build
 ```
 
 And then press F5, in Extension Development Host session, run `Start React Webview` command from command palette.

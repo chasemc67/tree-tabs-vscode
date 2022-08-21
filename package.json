@@ -62,8 +62,10 @@
     }
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.5",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-redux": "^8.0.2",
     "terser": "3.16.0"
   },
   "resolutions": {
