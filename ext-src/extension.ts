@@ -11,8 +11,26 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("treetabs-vscode.rightClick", () => {
-      TreeTabsPanel.currentPanel?.postMessage({ command: "RightClick" });
+    vscode.commands.registerCommand("treetabs-vscode.addChild", () => {
+      TreeTabsPanel.currentPanel?.postMessage({ command: "addChild" });
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("treetabs-vscode.addSibling", () => {
+      TreeTabsPanel.currentPanel?.postMessage({ command: "addSibling" });
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("treetabs-vscode.addParent", () => {
+      TreeTabsPanel.currentPanel?.postMessage({ command: "addParent" });
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("treetabs-vscode.addRoot", () => {
+      TreeTabsPanel.currentPanel?.postMessage({ command: "addRoot" });
     })
   );
 
