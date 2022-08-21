@@ -36,12 +36,36 @@
         "category": "Calico Colors",
         "title": "Clear Colors",
         "icon": "$(clear-all)"
+      },
+      {
+        "command": "treetabs-vscode.addChild",
+        "category": "Tree Tabs",
+        "title": "Add Child"
+      },
+      {
+        "command": "treetabs-vscode.addSibling",
+        "category": "Tree Tabs",
+        "title": "Add Sibling"
+      },
+      {
+        "command": "treetabs-vscode.addParent",
+        "category": "Tree Tabs",
+        "title": "Add Parent"
+      },
+      {
+        "command": "treetabs-vscode.addRoot",
+        "category": "Tree Tabs",
+        "title": "Add Root"
       }
     ],
     "menus": {
       "editor/context": [
         {
           "command": "treetabs-vscode.rightClick",
+          "group": "navigation"
+        },
+        {
+          "submenu": "treetabs-vscode.menuItems",
           "group": "navigation"
         }
       ],
@@ -51,8 +75,52 @@
           "group": "navigation",
           "when": "view == calicoColors.colorsView"
         }
+      ],
+      "treetabs-vscode.menuItems": [
+        {
+          "command": "treetabs-vscode.addChild",
+          "group": "navigation",
+          "label": "Add Child"
+        },
+        {
+          "command": "treetabs-vscode.addSibling",
+          "group": "navigation",
+          "label": "Add Sibling"
+        },
+        {
+          "command": "treetabs-vscode.addParent",
+          "group": "navigation",
+          "label": "Add Parent"
+        },
+        {
+          "command": "treetabs-vscode.addRoot",
+          "group": "navigation",
+          "label": "Add Root"
+        }
       ]
     },
+    "submenus": [
+      {
+        "id": "treetabs-vscode.addChild",
+        "label": "Add Child"
+      },
+      {
+        "id": "treetabs-vscode.addSibling",
+        "label": "Add Sibling"
+      },
+      {
+        "id": "treetabs-vscode.addParent",
+        "label": "Add Parent"
+      },
+      {
+        "id": "treetabs-vscode.addRoot",
+        "label": "Add Root"
+      },
+      {
+        "id": "treetabs-vscode.menuItems",
+        "label": "Add to tab tree"
+      }
+    ],
     "viewsContainers": {
       "activitybar": [
         {
