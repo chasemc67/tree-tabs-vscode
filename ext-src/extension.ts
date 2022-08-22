@@ -6,6 +6,7 @@ function sendAddTabMessage(command: string) {
   let fileName = vscode.window.activeTextEditor?.document?.fileName;
   // let fileName = file?.fileName;
   let lineNumber = vscode.window.activeTextEditor?.selection?.start.line;
+
   // let lineNumber = selection?.start.line;
   TreeTabsPanel.currentPanel?.postMessage({
     command,
@@ -129,13 +130,22 @@ class TreeTabsPanel {
 
     // Handle messages from the webview
     this._panel.webview.onDidReceiveMessage(
-      (message) => {
+      async (message) => {
         switch (message.command) {
           case "alert":
             vscode.window.showErrorMessage(message.text);
             return;
           case "tabSelected":
             console.log("===== webView requested to switch tab");
+            // possible commands to open the file
+            let uri = vscode.Uri.file(
+              "/Users/chasemccarty/dev/tree-tabs-vscode/ext-src/extension.ts"
+            );
+            console.log("opening tab");
+            let success = await vscode.commands.executeCommand(
+              "vscode.open",
+              uri
+            );
         }
       },
       null,
