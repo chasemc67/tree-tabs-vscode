@@ -31,7 +31,6 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
         case "tabSelected":
           // possible commands to open the file
           let uri = vscode.Uri.file(message.fileName);
-          console.log("opening tab");
           let success = await vscode.commands.executeCommand(
             "vscode.open",
             uri
@@ -49,7 +48,6 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
       console.log("========= no current view");
     }
 
-    console.log("========== posting message");
     this._view?.webview.postMessage(message);
   }
 
