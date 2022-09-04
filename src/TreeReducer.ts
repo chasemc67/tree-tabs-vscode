@@ -9,12 +9,12 @@ type TreeNode = {
   parent?: string; // probably need to make these ids
   children: string[];
   fileName: string;
-  lineNumber: string;
+  lineNumber?: number;
 };
 
 type AddNodeAction = {
   fileName: string;
-  lineNumber: string;
+  lineNumber?: number;
 };
 
 export interface TreeState {
@@ -33,7 +33,6 @@ export const treeSlice = createSlice({
     addSibling: (state) => {},
     addParent: (state) => {},
     addRoot: (state, action: PayloadAction<AddNodeAction>) => {
-      console.log(`====== evaluating action: ${JSON.stringify(action)}`);
       let newNode = {
         id: action.payload.fileName,
         children: [],

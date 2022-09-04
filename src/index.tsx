@@ -21,7 +21,6 @@ window.addEventListener("message", (event) => {
       store.dispatch(addParent());
       break;
     case "addRoot":
-      console.log(`====== dispatching message: ${JSON.stringify(message)}`);
       store.dispatch(addRoot(message));
       break;
     default:

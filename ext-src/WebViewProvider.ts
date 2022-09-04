@@ -30,11 +30,8 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
     webviewView.webview.onDidReceiveMessage(async (message) => {
       switch (message.command) {
         case "tabSelected":
-          console.log("===== webView requested to switch tab");
           // possible commands to open the file
-          let uri = vscode.Uri.file(
-            "/Users/chasemccarty/dev/tree-tabs-vscode/ext-src/extension.ts"
-          );
+          let uri = vscode.Uri.file(message.fileName);
           console.log("opening tab");
           let success = await vscode.commands.executeCommand(
             "vscode.open",
