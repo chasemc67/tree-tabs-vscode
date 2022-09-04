@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./TestReducer";
 import treeReducer from "./TreeReducer";
 
 type TreeTabsReduxState = {

@@ -1,20 +1,13 @@
 import React from "react";
 import type { RootState } from "./ReduxStore";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "./TestReducer";
+import { VSCodeApiGetter } from "./VSCodeApiGetter";
 
 import "./App.css";
 
-import logo from "./logo.svg";
-
 export function App() {
   const rootNodes = useSelector((state: RootState) => state.Trees.nodes);
-  const dispatch = useDispatch();
-
-  let data = {
-    name: "file 1",
-    children: [{ name: "file 2" }, { name: "file 2" }],
-  };
+  // const dispatch = useDispatch();
 
   let renderButton = function (button: any) {
     return (
@@ -30,13 +23,11 @@ export function App() {
 
   let onButtonClick = function () {
     // @ts-ignore
-    const vscode = acquireVsCodeApi(); // this needs to be moved to some global singleton or something
+    const vscode = VSCodeApiGetter.getVsCodeApi(); // this needs to be moved to some global singleton or something
     vscode.postMessage({
       command: "tabSelected",
       text: "somet text",
     });
-
-    dispatch(increment());
   };
 
   return (
