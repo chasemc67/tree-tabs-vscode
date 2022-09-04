@@ -11,7 +11,9 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider(
       WebViewProvider.viewType,
-      provider
+      provider,
+      // TODO replace this with the setState/getState https://code.visualstudio.com/api/extension-guides/webview#persistence
+      { webviewOptions: { retainContextWhenHidden: true } }
     )
   );
 
