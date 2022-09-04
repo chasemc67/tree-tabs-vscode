@@ -27,29 +27,34 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
 
     webviewView.webview.html = this._getReactForWebview(webviewView.webview);
 
-    webviewView.webview.onDidReceiveMessage((data) => {
-      switch (data.type) {
-        case "colorSelected": {
-          vscode.window.activeTextEditor?.insertSnippet(
-            new vscode.SnippetString(`#${data.value}`)
+    webviewView.webview.onDidReceiveMessage(async (message) => {
+      switch (message.command) {
+        case "tabSelected":
+          console.log("===== webView requested to switch tab");
+          // possible commands to open the file
+          let uri = vscode.Uri.file(
+            "/Users/chasemccarty/dev/tree-tabs-vscode/ext-src/extension.ts"
           );
-          break;
-        }
+          console.log("opening tab");
+          let success = await vscode.commands.executeCommand(
+            "vscode.open",
+            uri
+          );
       }
     });
   }
 
-  public addColor() {
-    if (this._view) {
-      this._view.show?.(true); // `show` is not implemented in 1.49 but is for 1.50 insiders
-      this._view.webview.postMessage({ type: "addColor" });
-    }
+  public getWebView() {
+    return this._view;
   }
 
-  public clearColors() {
-    if (this._view) {
-      this._view.webview.postMessage({ type: "clearColors" });
+  public postMessage(message: any) {
+    if (!this._view) {
+      console.log("========= no current view");
     }
+
+    console.log("========== posting message");
+    this._view?.webview.postMessage(message);
   }
 
   private _getReactForWebview(webview: vscode.Webview) {
