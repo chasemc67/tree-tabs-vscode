@@ -3,6 +3,7 @@ import type { RootState } from "../ReduxStore";
 import { useSelector, useDispatch } from "react-redux";
 import { VSCodeApiGetter } from "../VSCodeApiGetter";
 import "./TreeTabs.css";
+import { TreeNode, closeTab } from "../TreeReducer";
 
 function Tab(props: { name: string; closeTab: any; onClick: any }) {
   const [elPosition, setElPosition] = useState({ top: 5, left: 5 });
@@ -69,6 +70,7 @@ function Tab(props: { name: string; closeTab: any; onClick: any }) {
 
 function TreeTabs() {
   const rootNodes = useSelector((state: RootState) => state.Trees.nodes);
+  const dispatch = useDispatch();
 
   let onButtonClick = function (fileName: string, lineNumber?: number) {
     // @ts-ignore
@@ -80,18 +82,18 @@ function TreeTabs() {
     });
   };
 
-  const closeTab = (tabName: string) => {
-    // setTabs(tabs.filter((t) => t !== tabName));
+  const onCloseTab = (nodeId: string) => {
+    dispatch(closeTab({ nodeId: nodeId }));
   };
 
-  const getNameForNode = (node: any) => {
+  const getNameForNode = (node: TreeNode) => {
     return `${node.fileName.split("/").pop()}:${
       node.lineNumber !== undefined && node.lineNumber + 1
     }`;
   };
 
-  const getKeyForNode = (node: any) => {
-    return getNameForNode(node);
+  const getKeyForNode = (node: TreeNode) => {
+    return node.id;
   };
 
   return (
@@ -107,7 +109,7 @@ function TreeTabs() {
             key={getKeyForNode(node)}
             name={getNameForNode(node)}
             onClick={() => onButtonClick(node.fileName, node.lineNumber)}
-            closeTab={closeTab}
+            closeTab={() => onCloseTab(node.id)}
           ></Tab>
         ))}
       </div>

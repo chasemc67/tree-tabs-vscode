@@ -4,7 +4,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 // might want to modify this so its just a flat object keyed by ID
 // with the parents, children etc of each object
 // and just generate the graph at render
-type TreeNode = {
+export type TreeNode = {
   id: string;
   parent?: string; // probably need to make these ids
   children: string[];
@@ -15,6 +15,10 @@ type TreeNode = {
 type AddNodeAction = {
   fileName: string;
   lineNumber?: number;
+};
+
+type CloseTabAction = {
+  nodeId: string;
 };
 
 export interface TreeState {
@@ -41,9 +45,13 @@ export const treeSlice = createSlice({
       };
       state.nodes.push(newNode);
     },
+    closeTab: (state, action: PayloadAction<CloseTabAction>) => {
+      state.nodes = state.nodes.filter((n) => n.id !== action.payload.nodeId);
+    },
   },
 });
 
-export const { addChild, addSibling, addParent, addRoot } = treeSlice.actions;
+export const { addChild, addSibling, addParent, addRoot, closeTab } =
+  treeSlice.actions;
 
 export default treeSlice.reducer;
