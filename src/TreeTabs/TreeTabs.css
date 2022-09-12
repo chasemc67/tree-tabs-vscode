@@ -1,0 +1,26 @@
+.tree-tab {
+  position: absolute;
+}
+
+.tree-tab-new {
+  position: relative;
+}
+
+.tree-tabs-root {
+  width: 1000px;
+  height: 1000px;
+  overflow: scroll;
+}
+
+.tab-close-button {
+  display: none;
+  position: relative;
+  border-radius: 10px;
+  top: -10px;
+  left: -10px;
+  background-color: white;
+}
+
+.tree-tab:hover .tab-close-button {
+  display: inline-block;
+}
