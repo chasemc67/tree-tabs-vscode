@@ -24,3 +24,7 @@
 .tree-tab:hover .tab-close-button {
   display: inline-block;
 }
+
+.tree-tab-new:hover .tab-close-button {
+  display: inline-block;
+}
