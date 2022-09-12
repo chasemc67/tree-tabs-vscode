@@ -56,8 +56,8 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("treetabs-vscode.addRoot", (args) => {
-      sendAddTabMessage("addRoot");
+    vscode.commands.registerCommand("treetabs-vscode.addTab", (args) => {
+      sendAddTabMessage("addTab");
     })
   );
 }

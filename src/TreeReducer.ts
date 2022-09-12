@@ -33,10 +33,7 @@ export const treeSlice = createSlice({
   name: "trees",
   initialState,
   reducers: {
-    addChild: (state) => {},
-    addSibling: (state) => {},
-    addParent: (state) => {},
-    addRoot: (state, action: PayloadAction<AddNodeAction>) => {
+    addTab: (state, action: PayloadAction<AddNodeAction>) => {
       let newNode = {
         id: action.payload.fileName,
         children: [],
@@ -51,7 +48,6 @@ export const treeSlice = createSlice({
   },
 });
 
-export const { addChild, addSibling, addParent, addRoot, closeTab } =
-  treeSlice.actions;
+export const { addTab, closeTab } = treeSlice.actions;
 
 export default treeSlice.reducer;

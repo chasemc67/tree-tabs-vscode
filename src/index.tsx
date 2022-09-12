@@ -5,23 +5,14 @@ import { Provider } from "react-redux";
 import App from "./App";
 import "./index.css";
 
-import { addChild, addSibling, addParent, addRoot } from "./TreeReducer";
+import { addTab } from "./TreeReducer";
 
 window.addEventListener("message", (event) => {
   const message = event.data;
 
   switch (message.command) {
-    case "addChild":
-      store.dispatch(addChild());
-      break;
-    case "addSibling":
-      store.dispatch(addSibling());
-      break;
-    case "addParent":
-      store.dispatch(addParent());
-      break;
-    case "addRoot":
-      store.dispatch(addRoot(message));
+    case "addTab":
+      store.dispatch(addTab(message));
       break;
     default:
       break;

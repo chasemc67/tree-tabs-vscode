@@ -9,9 +9,7 @@
   "publisher": "rebornix",
   "activationEvents": [
     "onView:treeTabs.webViewProviderView",
-    "onCommand:treetabs-vscode.start",
-    "onCommand:calicoColors.addColor",
-    "onCommand:calicoColors.clearColors"
+    "onCommand:treetabs-vscode.start"
   ],
   "main": "./build/ext-src/extension.js",
   "contributes": {
@@ -27,35 +25,9 @@
         "category": "Tree Tabs"
       },
       {
-        "command": "calicoColors.addColor",
-        "category": "Calico Colors",
-        "title": "Add Color"
-      },
-      {
-        "command": "calicoColors.clearColors",
-        "category": "Calico Colors",
-        "title": "Clear Colors",
-        "icon": "$(clear-all)"
-      },
-      {
-        "command": "treetabs-vscode.addChild",
+        "command": "treetabs-vscode.addTab",
         "category": "Tree Tabs",
-        "title": "Add Child"
-      },
-      {
-        "command": "treetabs-vscode.addSibling",
-        "category": "Tree Tabs",
-        "title": "Add Sibling"
-      },
-      {
-        "command": "treetabs-vscode.addParent",
-        "category": "Tree Tabs",
-        "title": "Add Parent"
-      },
-      {
-        "command": "treetabs-vscode.addRoot",
-        "category": "Tree Tabs",
-        "title": "Add Root"
+        "title": "Add Tab"
       }
     ],
     "menus": {
@@ -69,33 +41,12 @@
           "group": "navigation"
         }
       ],
-      "view/title": [
-        {
-          "command": "calicoColors.clearColors",
-          "group": "navigation",
-          "when": "view == calicoColors.colorsView"
-        }
-      ],
+      "view/title": [],
       "treetabs-vscode.menuItems": [
         {
-          "command": "treetabs-vscode.addChild",
+          "command": "treetabs-vscode.addTab",
           "group": "navigation",
-          "label": "Add Child"
-        },
-        {
-          "command": "treetabs-vscode.addSibling",
-          "group": "navigation",
-          "label": "Add Sibling"
-        },
-        {
-          "command": "treetabs-vscode.addParent",
-          "group": "navigation",
-          "label": "Add Parent"
-        },
-        {
-          "command": "treetabs-vscode.addRoot",
-          "group": "navigation",
-          "label": "Add Root"
+          "label": "Add Tab"
         }
       ]
     },
