@@ -32,7 +32,15 @@ npm install
 npm run build
 ```
 
-And then press F5, in Extension Development Host session, run `Start React Webview` command from command palette.
+And then press F5, in Extension Development Host session, run `Tree Tabs Webview` command from command palette.
+
+## Packaging and Shipping
+`npm install -g vsce` if you dont have it 
+`vsce package` to create a .vsix file
+Open VSCode
+Go to Extensions view (cmd+shift+X)
+Install from VSIX 
+choose your VSIX
 
 ## Debugging
 
