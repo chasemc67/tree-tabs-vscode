@@ -4,6 +4,7 @@
   "description": "A Tree-based layout mananger for open tabs",
   "version": "0.0.1",
   "engines": {
+    "node": ">=16.0.0 <17.0.0",
     "vscode": "^1.70.0"
   },
   "publisher": "rebornix",
