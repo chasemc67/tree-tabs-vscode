@@ -60,14 +60,18 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
     const mainScript = manifest["main.js"];
     const mainStyle = manifest["main.css"];
 
-    const scriptPathOnDisk = vscode.Uri.file(
-      path.join(this._extensionPath, "build", mainScript)
-    );
-    const scriptUri = scriptPathOnDisk.with({ scheme: "vscode-resource" });
-    const stylePathOnDisk = vscode.Uri.file(
-      path.join(this._extensionPath, "build", mainStyle)
-    );
-    const styleUri = stylePathOnDisk.with({ scheme: "vscode-resource" });
+    // Transform the local file paths to webview URI paths
+    const scriptUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "build", mainScript));
+    const styleUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "build", mainStyle));
+
+    // const scriptPathOnDisk = vscode.Uri.file(
+    //   path.join(this._extensionPath, "build", mainScript)
+    // );
+    // const scriptUri = scriptPathOnDisk.with({ scheme: "vscode-resource" });
+    // const stylePathOnDisk = vscode.Uri.file(
+    //   path.join(this._extensionPath, "build", mainStyle)
+    // );
+    // const styleUri = stylePathOnDisk.with({ scheme: "vscode-resource" });
 
     // Use a nonce to whitelist which scripts can be run
     const nonce = getNonce();
@@ -81,9 +85,7 @@ export class WebViewProvider implements vscode.WebviewViewProvider {
 				<title>React App</title>
 				<link rel="stylesheet" type="text/css" href="${styleUri}">
 				<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src vscode-resource: https:; script-src 'nonce-${nonce}';style-src vscode-resource: 'unsafe-inline' http: https: data:;">
-				<base href="${vscode.Uri.file(path.join(this._extensionPath, "build")).with({
-          scheme: "vscode-resource",
-        })}/">
+				<base href="${webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "build"))}/">
 			</head>
 
 			<body>
